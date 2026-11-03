@@ -36,7 +36,7 @@ export function Intro() {
               doctrinal teaching, leadership development and global missions.
             </p>
             <p>
-              From pioneering the ministry in Makurdi in 2007 to overseeing its international operations today, his
+              From joining the ministry in Makurdi in 2007 to overseeing its international operations today, his
               emphasis has stayed constant: doctrinal accuracy, discipleship and the formation of equipped leaders.
             </p>
             <Button href="/about" className="mt-2">
