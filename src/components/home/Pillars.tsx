@@ -26,7 +26,7 @@ export function Pillars() {
                 What he <Highlight>carries</Highlight>
               </h2>
               <p className="mt-5 max-w-md text-fg/70">
-                Four commitments that have shaped his ministry across more than three decades.
+                Six areas of focus that shape his ministry, built on more than three decades of service.
               </p>
             </Reveal>
 
@@ -64,7 +64,7 @@ export function Pillars() {
               <Button href="/about" variant="glass">
                 Meet Apostle Daniel
               </Button>
-              <Button href="/invite">Invite him</Button>
+              <Button href="/invite">Send Invite</Button>
             </div>
           </div>
 

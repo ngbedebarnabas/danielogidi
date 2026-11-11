@@ -10,12 +10,27 @@ export type EventItem = {
   venue?: string;
   host?: string;
   description: string;
+  /**
+   * The flyer / invitation shown beside the event. Optional: without it, a
+   * default flyer is generated from the event's text.
+   *  - `image`: path to real artwork, e.g. "/flyers/apostolic-conference.jpg"
+   *    (put the file in /public/flyers). Shown as-is when set.
+   *  - Otherwise a designed flyer is generated using `photo` as its backdrop.
+   */
+  flyer?: {
+    type?: "Flyer" | "Invitation";
+    subtitle?: string;
+    image?: string;
+    photo?: string;
+    /** Focal point for the photo, CSS object-position */
+    focus?: string;
+  };
 };
 
 /**
  * ⚠️ SAMPLE ENTRIES — replace these with Apostle Daniel's real itinerary.
  * Add, edit or delete objects below; the Itinerary page and the home page
- * update automatically. Events whose end date has passed move to "Past" on
+ * update automatically (flyers included). Events whose end date has passed move to "Past" on
  * their own.
  */
 export const events: EventItem[] = [
@@ -31,6 +46,12 @@ export const events: EventItem[] = [
     host: "Remnant Christian Network",
     description:
       "Three days of doctrinal teaching and leadership impartation for ministers and church leaders.",
+    flyer: {
+      type: "Flyer",
+      subtitle: "Doctrine · Leadership · Mission",
+      photo: "/images/ministering-5.jpg",
+      focus: "35% 40%",
+    },
   },
   {
     id: "ministers-training-intensive",
@@ -40,9 +61,15 @@ export const events: EventItem[] = [
     end: "2027-02-20",
     city: "To be announced",
     country: "",
-    host: "Adullam Seminary",
+    host: "Remnant Christian Network Theological Seminary (Adullam)",
     description:
       "A focused training weekend on doctrine, leadership competence and practical ministry capacity.",
+    flyer: {
+      type: "Invitation",
+      subtitle: "Hosted by Remnant Christian Network Theological Seminary (Adullam)",
+      photo: "/images/about-seminary.jpg",
+      focus: "50% 25%",
+    },
   },
   {
     id: "mission-outreach-church-strengthening",
@@ -55,6 +82,12 @@ export const events: EventItem[] = [
     host: "Remnant Christian Network",
     description:
       "Outreach, discipleship and the strengthening of local church systems in partnership with host ministries.",
+    flyer: {
+      type: "Flyer",
+      subtitle: "Discipleship · Outreach",
+      photo: "/images/altar-crowd.jpg",
+      focus: "80% 40%",
+    },
   },
   {
     id: "leadership-development-retreat",
@@ -66,5 +99,11 @@ export const events: EventItem[] = [
     country: "",
     description:
       "A retreat for pastors and ministry leaders focused on discipleship, doctrine and healthy church structure.",
+    flyer: {
+      type: "Invitation",
+      subtitle: "For pastors and ministry leaders",
+      photo: "/images/about-portrait.jpg",
+      focus: "50% 25%",
+    },
   },
 ];

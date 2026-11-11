@@ -11,12 +11,11 @@ npm run build && npm start
 
 | Route | What it is |
 | --- | --- |
-| `/` | Hero, stats, intro, themes ticker, ministry areas, Adullam, itinerary / flyers / teachings previews, photo gallery, invite CTA |
-| `/about` | Full bio, role cards, animated timeline, Adullam seminary |
-| `/itinerary` | Upcoming / past engagements with "Add to Google Calendar" |
-| `/flyers` | Flyers & invitations with filter and full-size viewer |
+| `/` | Hero, stats, intro, themes ticker, ministry areas, the seminary, itinerary / teachings previews, photo gallery, invite CTA |
+| `/about` | Full bio, role cards, animated timeline, Remnant Christian Network Theological Seminary (Adullam) |
+| `/itinerary` | Upcoming / past engagements, each with its flyer or invitation (tap to enlarge) and "Add to Google Calendar". `/flyers` redirects here |
 | `/teachings` | Themes + filterable teaching library |
-| `/invite` | Event invitation form (all requested fields) |
+| `/invite` | Event invitation form: ministry background and size, event dates, topic, burden, audience size and types (multi-select), sessions, session times, optional flyer upload |
 | `/contact` | General contact form |
 
 ## Editing content (no component changes needed)
@@ -24,8 +23,7 @@ npm run build && npm start
 Everything editable lives in `src/data/`:
 
 - `site.ts`: name, tagline, **contact email / phone / location and social links** (empty values are hidden), stats, ministry areas, timeline
-- `itinerary.ts`: events (**sample entries**; replace them)
-- `flyers.ts`: flyers & invitations (**sample entries**). Put real artwork in `public/flyers/` and set `image`; without `image`, a designed flyer is generated from the text and a photo
+- `itinerary.ts`: events and their flyers (**sample entries**; replace them). Each event can have a `flyer` block: set `image` to real artwork in `public/flyers/` (e.g. `/flyers/conference.jpg`), or leave it out and a designed flyer is generated from the event text and a `photo`
 - `teachings.ts`: teaching library (**sample entries**). Add an `href` to turn "Coming soon" into a Watch / Listen / Read button
 - `gallery.ts`: gallery photos (files in `public/images/`)
 
@@ -33,9 +31,11 @@ Events move from Upcoming to Past automatically once their end date passes (the 
 
 ## Forms → email
 
-Both forms POST to `/api/enquiry`, which validates on the server and emails the ministry inbox via
+Both forms POST (multipart) to `/api/enquiry`, which validates on the server and emails the ministry inbox via
 [Resend](https://resend.com). Copy `.env.example` to `.env.local` and fill in `RESEND_API_KEY`,
 `MAIL_FROM` (a sender on a domain verified in Resend) and `MAIL_TO`.
+
+An uploaded flyer (JPG, PNG, WebP or PDF, up to 4 MB, checked by its real contents) is attached to the invitation email.
 
 Without those keys, `npm run dev` just prints each submission to the terminal; a production build returns an
 error to the visitor instead of silently dropping messages.

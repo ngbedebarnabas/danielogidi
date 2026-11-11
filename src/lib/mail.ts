@@ -1,7 +1,10 @@
+type Attachment = { filename: string; content: Buffer; type: string };
+
 type Mail = {
   subject: string;
   text: string;
   replyTo: string;
+  attachments?: Attachment[];
 };
 
 export type MailResult = { ok: true; delivered: boolean } | { ok: false };
@@ -13,14 +16,17 @@ export type MailResult = { ok: true; delivered: boolean } | { ok: false };
  * Without those keys, development just logs the message so the form can be
  * tried locally; production reports failure instead of silently dropping it.
  */
-export async function sendMail({ subject, text, replyTo }: Mail): Promise<MailResult> {
+export async function sendMail({ subject, text, replyTo, attachments = [] }: Mail): Promise<MailResult> {
   const key = process.env.RESEND_API_KEY;
   const from = process.env.MAIL_FROM;
   const to = process.env.MAIL_TO;
 
   if (!key || !from || !to) {
     if (process.env.NODE_ENV !== "production") {
-      console.log(`\n[mail:dev] Not configured, logging instead.\nSubject: ${subject}\nReply-To: ${replyTo}\n\n${text}\n`);
+      const files = attachments.map((a) => `${a.filename} (${a.type}, ${Math.round(a.content.length / 1024)} KB)`);
+      console.log(
+        `\n[mail:dev] Not configured, logging instead.\nSubject: ${subject}\nReply-To: ${replyTo}\nAttachments: ${files.join(", ") || "none"}\n\n${text}\n`,
+      );
       return { ok: true, delivered: false };
     }
     console.error("[mail] RESEND_API_KEY / MAIL_FROM / MAIL_TO are not set.");
@@ -36,6 +42,9 @@ export async function sendMail({ subject, text, replyTo }: Mail): Promise<MailRe
       reply_to: replyTo,
       subject,
       text,
+      ...(attachments.length
+        ? { attachments: attachments.map((a) => ({ filename: a.filename, content: a.content.toString("base64") })) }
+        : {}),
     }),
   });
 

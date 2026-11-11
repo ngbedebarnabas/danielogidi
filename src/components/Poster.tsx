@@ -1,6 +1,22 @@
 import Image from "next/image";
-import type { FlyerItem } from "@/data/flyers";
 import { Star4 } from "./Sparkle";
+
+export type FlyerItem = {
+  id: string;
+  type: "Flyer" | "Invitation";
+  title: string;
+  subtitle?: string;
+  /** Display date, e.g. "4 – 6 Dec 2026" */
+  date: string;
+  location: string;
+  host?: string;
+  /** Real artwork path; when set, shown instead of the generated flyer */
+  image?: string;
+  /** Backdrop photo for the generated flyer */
+  photo: string;
+  /** CSS object-position for the photo */
+  focus?: string;
+};
 
 /** Largest title size (in cqw) that keeps the longest word inside `avail` cqw of width. */
 function fitSize(title: string, avail: number, max: number) {
@@ -74,22 +90,22 @@ function InvitationArt({ item, sizes }: { item: FlyerItem; sizes: string }) {
       <div className="absolute inset-[3.5cqw] border border-gold" />
       <div className="absolute inset-[5cqw] border border-ink/15" />
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-[12cqw] text-center">
-        <div className="relative size-[24cqw] overflow-hidden rounded-full ring-[0.8cqw] ring-gold ring-offset-[1.2cqw] ring-offset-paper">
+      <div className="absolute inset-0 flex flex-col items-center justify-center px-[11cqw] pt-[2cqw] text-center">
+        <div className="relative size-[20cqw] overflow-hidden rounded-full ring-[0.8cqw] ring-gold ring-offset-[1.2cqw] ring-offset-paper">
           <Image src={item.photo} alt="" fill sizes={sizes} className="object-cover" style={{ objectPosition: item.focus }} />
         </div>
-        <p className="mt-[6cqw] text-[2.8cqw] font-bold tracking-[0.34em] uppercase">You are invited</p>
+        <p className="mt-[4.5cqw] text-[2.8cqw] font-bold tracking-[0.34em] uppercase">You are invited</p>
         <h3
           className="mt-[3cqw] font-display leading-[1.08] font-extrabold tracking-tight"
           style={{ fontSize: `${fitSize(item.title, 74, 8.2)}cqw` }}
         >
           {item.title}
         </h3>
-        {item.subtitle && <p className="mt-[2cqw] text-[3.4cqw] text-ink/70 italic">{item.subtitle}</p>}
-        <Star4 className="my-[4cqw] size-[4.5cqw] text-gold" />
+        {item.subtitle && <p className="mt-[1.5cqw] text-[3cqw] leading-snug text-ink/70 italic">{item.subtitle}</p>}
+        <Star4 className="my-[3cqw] size-[4cqw] text-gold" />
         <p className="text-[3cqw] font-bold tracking-[0.18em] uppercase">Ministering</p>
         <p className="font-display text-[4.6cqw] font-extrabold">Apostle Daniel Ogidi</p>
-        <p className="mt-[4cqw] text-[4.2cqw] font-extrabold">{item.date}</p>
+        <p className="mt-[3cqw] text-[4.2cqw] font-extrabold">{item.date}</p>
         <p className="mt-[1cqw] text-[3.4cqw] text-ink/70">{item.location}</p>
       </div>
     </div>

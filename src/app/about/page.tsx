@@ -11,7 +11,7 @@ import { Timeline } from "@/components/Timeline";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "The story of Apostle Daniel Ogidi: over 37 years in ministry, International Director of Remnant Christian Network and pioneer President of Adullam Seminary.",
+    "The story of Apostle Daniel Ogidi: over 37 years in ministry, International Director of Remnant Christian Network and pioneer President of Remnant Christian Network Theological Seminary (Adullam).",
 };
 
 const roles = [
@@ -36,7 +36,7 @@ export default function AboutPage() {
       />
 
       {/* Bio */}
-      <section className="container-x py-16 sm:py-24">
+      <section className="container-x py-20 sm:py-32">
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <Reveal x={-24} y={0} className="lg:sticky lg:top-28 lg:self-start">
             <div className="relative">
@@ -116,7 +116,7 @@ export default function AboutPage() {
 
             <StaggerItem className="pt-4">
               <div className="flex flex-wrap gap-3">
-                <Button href="/invite">Invite him to your event</Button>
+                <Button href="/invite">Send Invite</Button>
                 <Button href="/teachings" variant="outline">
                   Explore his teachings
                 </Button>
@@ -127,7 +127,7 @@ export default function AboutPage() {
       </section>
 
       {/* Journey */}
-      <section className="container-x py-16 sm:py-24">
+      <section className="container-x py-20 sm:py-32">
         <SectionHeading eyebrow="The journey">
           From the mission field to <Highlight>global</Highlight> oversight
         </SectionHeading>
@@ -137,7 +137,7 @@ export default function AboutPage() {
       </section>
 
       {/* Adullam */}
-      <section id="adullam" className="container-x scroll-mt-24 py-16 sm:py-24">
+      <section id="adullam" className="container-x scroll-mt-24 py-20 sm:py-32">
         <div className="gold-glow relative overflow-hidden rounded-[2rem] border border-line bg-panel/70 p-6 sm:rounded-[3rem] sm:p-12">
           <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
             <Reveal x={-24} y={0} className="grid grid-cols-2 gap-4">

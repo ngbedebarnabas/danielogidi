@@ -1,7 +1,7 @@
 import type { ComponentProps, ReactNode } from "react";
 import { ChevronDown } from "../icons";
 
-type Shared = {
+export type Shared = {
   name: string;
   label: string;
   error?: string;
@@ -11,10 +11,10 @@ type Shared = {
   className?: string;
 };
 
-const control =
+export const control =
   "w-full rounded-2xl border bg-bg px-5 py-4 text-[0.95rem] text-fg placeholder:text-fg/35 transition-colors focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30";
 
-function Wrap({
+export function Wrap({
   name, label, error, hint, required, optional, className = "", children,
 }: Shared & { children: ReactNode }) {
   return (
@@ -39,7 +39,7 @@ function Wrap({
   );
 }
 
-const aria = (name: string, error?: string, hint?: string) => ({
+export const aria = (name: string, error?: string, hint?: string) => ({
   id: `field-${name}`,
   name,
   "aria-invalid": error ? true : undefined,

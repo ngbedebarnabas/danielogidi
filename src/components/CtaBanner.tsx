@@ -4,7 +4,7 @@ import { Highlight, Reveal } from "./motion";
 
 export function CtaBanner() {
   return (
-    <section className="container-x py-12 sm:py-20">
+    <section className="container-x py-16 sm:py-28">
       <div data-theme="dark" className="relative isolate overflow-hidden rounded-[2rem] bg-ink text-fg sm:rounded-[3.5rem]">
         <Image
           src="/images/hero-stage-2.jpg"
@@ -26,7 +26,7 @@ export function CtaBanner() {
               will be glad to consider it.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Button href="/invite">Send an invitation</Button>
+              <Button href="/invite">Send Invite</Button>
               <Button href="/itinerary" variant="glass">
                 See his itinerary
               </Button>

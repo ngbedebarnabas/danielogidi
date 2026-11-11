@@ -35,12 +35,12 @@ export default function ContactPage() {
             Let&apos;s <Highlight>connect</Highlight>
           </>
         }
-        description="For general enquiries, media, ministry partnership or Adullam Seminary, send a message and the right person will get back to you."
+        description="For general enquiries, media, ministry partnership or Remnant Christian Network Theological Seminary (Adullam), send a message and the right person will get back to you."
         image="/images/hero-stage.jpg"
         focus="20% 35%"
       />
 
-      <section className="container-x pb-20 sm:pb-28">
+      <section className="container-x pb-24 sm:pb-36">
         <div className="grid gap-10 lg:grid-cols-[22rem_1fr] lg:gap-16">
           <aside className="space-y-4">
             <Reveal>
@@ -53,7 +53,7 @@ export default function ContactPage() {
                   href="/invite"
                   className="mt-5 inline-flex rounded-full bg-gold px-6 py-3 text-sm font-bold text-ink transition-colors hover:bg-gold-soft"
                 >
-                  Go to invitation form
+                  Send Invite
                 </Link>
               </div>
             </Reveal>

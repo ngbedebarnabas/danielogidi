@@ -3,7 +3,7 @@ export const site = {
   role: "International Director, Remnant Christian Network",
   tagline: "Equipping leaders. Strengthening the church.",
   description:
-    "Apostle Daniel Ogidi is International Director of Remnant Christian Network and pioneer President of its Theological Seminary (Adullam), with over 37 years of apostolic leadership, doctrinal teaching, leadership development and global missions.",
+    "Apostle Daniel Ogidi is International Director of Remnant Christian Network and pioneer President of Remnant Christian Network Theological Seminary (Adullam), with over 37 years of apostolic leadership, doctrinal teaching, leadership development and global missions.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 
   // Fill these in when you have them. Empty values are hidden from the site.
@@ -22,7 +22,6 @@ export const site = {
   nav: [
     { href: "/about", label: "About" },
     { href: "/itinerary", label: "Itinerary" },
-    { href: "/flyers", label: "Flyers" },
     { href: "/teachings", label: "Teachings" },
     { href: "/contact", label: "Contact" },
   ],
@@ -32,7 +31,7 @@ export const stats = [
   { value: 37, suffix: "+", label: "Years in active ministry", count: true },
   { value: "2007", label: "Pioneer member, Remnant Christian Network" },
   { value: "2013", label: "Ordained into apostolic office" },
-  { value: "2015", label: "Adullam Seminary established" },
+  { value: "2015", label: "Remnant Christian Network Theological Seminary (Adullam) established" },
 ] as const;
 
 export const pillars = [
@@ -52,13 +51,25 @@ export const pillars = [
     title: "Leadership Development",
     body: "Raising equipped leaders through structured training, discipleship and the practical capacity to run healthy churches.",
     image: "/images/graduation-1.jpg",
-    alt: "Adullam seminary graduates and faculty in academic regalia",
+    alt: "Remnant Christian Network Theological Seminary (Adullam) graduates and faculty in academic regalia",
   },
   {
     title: "Global Missions",
     body: "Conferences, leadership trainings and mission outreaches across nations, in diverse cultural and ecclesiastical settings.",
     image: "/images/altar-crowd.jpg",
     alt: "Apostle Daniel Ogidi praying with a congregation at the altar",
+  },
+  {
+    title: "Equipping for the Marketplace",
+    body: "Preparing believers to carry their faith, calling and character into business, work and enterprise.",
+    image: "/images/desk-1.jpg",
+    alt: "Apostle Daniel Ogidi seated at his desk in a business suit, hands clasped",
+  },
+  {
+    title: "Political Readiness",
+    body: "Raising believers and leaders who are ready to engage public life and civic responsibility with conviction and integrity.",
+    image: "/images/ministering-4.jpg",
+    alt: "Apostle Daniel Ogidi standing at a lectern with a microphone",
   },
 ] as const;
 
@@ -99,7 +110,7 @@ export const timeline = [
   },
   {
     years: "2015",
-    title: "Adullam Seminary established",
+    title: "Remnant Christian Network Theological Seminary (Adullam) established",
     body: "Led the founding of the Remnant Christian Network Theological Seminary (Adullam) under Apostle Arome Osayi, and became its pioneer President.",
   },
   {

@@ -6,7 +6,7 @@ export function Logo({ className = "" }: { className?: string }) {
     <Link
       href="/"
       aria-label="Apostle Daniel Ogidi, home"
-      className={`flex items-center gap-2.5 ${className}`}
+      className={`flex shrink-0 items-center gap-2.5 whitespace-nowrap ${className}`}
     >
       <Star4 className="size-6 shrink-0 text-gold" />
       <span className="font-display text-[0.8rem] leading-[1.05] font-extrabold tracking-wider text-fg uppercase">

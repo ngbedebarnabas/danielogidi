@@ -5,7 +5,7 @@ import { gallery } from "@/data/gallery";
 
 export function GallerySection() {
   return (
-    <section className="container-x py-20 sm:py-28">
+    <section className="container-x py-24 sm:py-32">
       <SectionHeading eyebrow="Gallery">
         Moments in <Highlight>ministry</Highlight>
       </SectionHeading>

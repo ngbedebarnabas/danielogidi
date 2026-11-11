@@ -3,7 +3,7 @@ import { CountUp, Reveal, Stagger, StaggerItem } from "@/components/motion";
 
 export function StatsBar() {
   return (
-    <section className="container-x pt-16 sm:pt-24">
+    <section className="container-x">
       <Stagger className="grid grid-cols-2 overflow-hidden rounded-[2rem] border border-line bg-panel/80 sm:rounded-[2.5rem] lg:grid-cols-4">
         {stats.map((s, i) => (
           <StaggerItem
@@ -15,7 +15,7 @@ export function StatsBar() {
             <p className="font-display text-[1.7rem] font-extrabold tracking-tight min-[400px]:text-4xl sm:text-5xl">
               {"count" in s && s.count ? <CountUp to={s.value as number} suffix={"suffix" in s ? s.suffix : ""} /> : s.value}
             </p>
-            <p className="mx-auto mt-2 max-w-[14ch] text-xs leading-snug text-muted sm:max-w-[18ch] sm:text-sm">{s.label}</p>
+            <p className="mx-auto mt-2 max-w-[16ch] text-xs leading-snug text-muted sm:max-w-[26ch] sm:text-sm">{s.label}</p>
           </StaggerItem>
         ))}
       </Stagger>

@@ -61,7 +61,7 @@ export function ItineraryList({ upcoming, past }: EventBuckets) {
                     His calendar fills quickly. If you would like him to minister at your event, send an invitation.
                   </p>
                   <div className="mt-6">
-                    <Button href="/invite">Invite him</Button>
+                    <Button href="/invite">Send Invite</Button>
                   </div>
                 </>
               )}

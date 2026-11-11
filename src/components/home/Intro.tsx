@@ -5,7 +5,7 @@ import { Star4 } from "@/components/Sparkle";
 
 export function Intro() {
   return (
-    <section className="container-x py-24 sm:py-32">
+    <section className="container-x py-28 sm:py-40">
       <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-20">
         <div>
           <Reveal>
@@ -32,7 +32,7 @@ export function Intro() {
           <Reveal delay={0.1} className="space-y-5 text-[1.02rem] leading-relaxed text-fg/75">
             <p>
               Apostle Daniel Ogidi serves as International Director of Remnant Christian Network and pioneer President
-              of its Theological Seminary (Adullam). For over 37 years his work has centred on apostolic leadership,
+              of Remnant Christian Network Theological Seminary (Adullam). For over 37 years his work has centred on apostolic leadership,
               doctrinal teaching, leadership development and global missions.
             </p>
             <p>

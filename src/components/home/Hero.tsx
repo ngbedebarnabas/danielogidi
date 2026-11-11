@@ -20,7 +20,7 @@ export function Hero() {
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "-12%"]);
 
   return (
-    <section ref={ref} className="px-2 sm:px-3">
+    <section ref={ref} className="mb-16 px-2 sm:mb-28 sm:px-3">
       <div data-theme="dark" className="relative isolate text-fg flex min-h-[100svh] flex-col overflow-hidden rounded-b-[2.25rem] bg-ink sm:rounded-b-[4rem] lg:rounded-b-[5rem]">
         {/* Photo (hero 3) with parallax */}
         <motion.div style={{ y: imageY }} className="absolute inset-x-0 -top-[4%] -z-20 h-[72%] [mask-image:linear-gradient(to_bottom,black_55%,transparent)] lg:left-auto lg:-bottom-[6%] lg:h-auto lg:w-[72%] lg:[mask-image:linear-gradient(to_right,transparent,black_38%)]">
@@ -83,7 +83,7 @@ export function Hero() {
               animate="show"
               className="mt-7 flex flex-wrap items-center gap-3 sm:mt-9"
             >
-              <Button href="/invite">Invite Apostle Daniel</Button>
+              <Button href="/invite">Send Invite</Button>
               <Button href="/about" variant="glass">
                 Read his story
               </Button>

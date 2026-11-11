@@ -23,7 +23,7 @@ export function PageHeader({
   return (
     <header
       data-theme="dark"
-      className="gold-glow relative mx-2 overflow-hidden rounded-b-[2.25rem] bg-ink pt-36 pb-16 text-fg sm:mx-3 sm:rounded-b-[4rem] sm:pt-44 sm:pb-24"
+      className="gold-glow relative mx-2 mb-16 overflow-hidden rounded-b-[2.25rem] bg-ink pt-36 pb-16 text-fg sm:mx-3 sm:mb-28 sm:rounded-b-[4rem] sm:pt-44 sm:pb-24"
     >
       {image && (
         <>

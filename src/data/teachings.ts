@@ -73,7 +73,7 @@ export const teachings: TeachingItem[] = [
     format: "Audio",
     summary: "A practical framework for identifying, training and releasing leaders for ministry.",
     image: "/images/graduation-1.jpg",
-    alt: "Adullam seminary graduates",
+    alt: "Remnant Christian Network Theological Seminary (Adullam) graduates",
   },
   {
     id: "grassroots-discipleship",

@@ -10,8 +10,8 @@ import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 import { Close, Menu } from "./icons";
 
-const left = site.nav.slice(0, 3);
-const right = site.nav.slice(3);
+const left = site.nav.slice(0, 2);
+const right = site.nav.slice(2);
 
 export function Navbar() {
   const pathname = usePathname();
@@ -86,7 +86,7 @@ export function Navbar() {
               href="/invite"
               className="ml-1 rounded-full bg-gold px-4 py-2.5 text-[0.75rem] whitespace-nowrap font-bold tracking-[0.12em] text-ink uppercase transition-colors hover:bg-gold-soft"
             >
-              Invite Him
+              Send Invite
             </Link>
             <ThemeToggle />
           </div>
@@ -150,7 +150,7 @@ export function Navbar() {
                   onClick={() => setOpen(false)}
                   className="inline-flex rounded-full bg-gold px-7 py-4 text-sm font-bold tracking-widest text-ink uppercase"
                 >
-                  Invite Him to Your Event
+                  Send Invite
                 </Link>
               </motion.li>
             </motion.ul>

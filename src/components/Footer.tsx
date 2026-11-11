@@ -35,14 +35,14 @@ export function Footer() {
               Invite Apostle Daniel Ogidi to minister, teach or train leaders at your event.
             </p>
             <div className="mt-8">
-              <Button href="/invite">Invite him to your event</Button>
+              <Button href="/invite">Send Invite</Button>
             </div>
           </div>
 
           <div>
             <h3 className="mb-5 text-xs font-bold tracking-[0.2em] text-gold uppercase">Explore</h3>
             <ul className="space-y-3">
-              {[{ href: "/", label: "Home" }, ...site.nav, { href: "/invite", label: "Invite Him" }].map((l) => (
+              {[{ href: "/", label: "Home" }, ...site.nav, { href: "/invite", label: "Send Invite" }].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-white/80 transition-colors hover:text-gold">
                     {l.label}

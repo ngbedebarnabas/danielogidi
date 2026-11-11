@@ -1,15 +1,40 @@
 // Shared by the forms (client) and the API route (server).
 
+export const audienceOptions = [
+  "General Overseers",
+  "Senior Pastors",
+  "Associate Pastors",
+  "Church Workers",
+  "Corporate Professionals",
+  "Believers",
+  "Politicians",
+  "Captains of Industries",
+  "Government Officials",
+] as const;
+
+/** Flyer upload limits. 4 MB keeps requests under typical serverless body limits. */
+export const FLYER_MAX_BYTES = 4 * 1024 * 1024;
+export const FLYER_TYPES = ["image/jpeg", "image/png", "image/webp", "application/pdf"] as const;
+export const FLYER_ACCEPT = ".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf";
+
 export type InviteValues = {
   fullName: string;
   organization: string;
   email: string;
   phone: string;
   location: string;
+  social: string;
+  background: string;
+  ministrySize: string;
   dateFrom: string;
   dateTo: string;
-  social: string;
   topic: string;
+  burden: string;
+  audienceSize: string;
+  audienceTypes: string[];
+  sessions: string;
+  sessionDetails: string;
+  flyer: File | null;
   comments: string;
   /** Honeypot: real visitors never fill this in. */
   website: string;
@@ -30,7 +55,7 @@ export const contactSubjects = [
   "General enquiry",
   "Media & press",
   "Ministry partnership",
-  "Adullam Seminary",
+  "Remnant Christian Network Theological Seminary (Adullam)",
   "Prayer & counsel",
   "Something else",
 ] as const;
@@ -56,6 +81,19 @@ function emailError(v: string) {
   return undefined;
 }
 
+/** The flyer is optional; when present it must be a supported type and small enough. */
+export function flyerError(file: { type: string; size: number } | null) {
+  if (!file) return undefined;
+  if (file.size === 0) return "That file is empty.";
+  if (!(FLYER_TYPES as readonly string[]).includes(file.type)) return "Upload a JPG, PNG, WebP or PDF file.";
+  if (file.size > FLYER_MAX_BYTES) {
+    return `That file is ${(file.size / 1024 / 1024).toFixed(1)} MB. The limit is ${FLYER_MAX_BYTES / 1024 / 1024} MB.`;
+  }
+  return undefined;
+}
+
+type TextKey = Exclude<keyof InviteValues, "audienceTypes" | "flyer">;
+
 /** `today` is "YYYY-MM-DD"; pass it to reject dates in the past. */
 export function validateInvite(v: InviteValues, today?: string): Errors<InviteValues> {
   const e: Errors<InviteValues> = {};
@@ -68,6 +106,10 @@ export function validateInvite(v: InviteValues, today?: string): Errors<InviteVa
   const pe = phoneError(v.phone, true);
   if (pe) e.phone = pe;
   if (t(v.location).length < 3) e.location = "Enter the physical location of the ministry or organization.";
+  if (t(v.social) && !SOCIAL.test(t(v.social))) e.social = "Use a handle like @name or a link to the profile.";
+
+  if (t(v.background).length < 20) e.background = "Give a short background of the ministry or organization (a couple of sentences).";
+  if (!t(v.ministrySize)) e.ministrySize = "Tell us the current or average size, e.g. “about 400 members”.";
 
   if (!ISO_DATE.test(v.dateFrom)) e.dateFrom = "Choose the first day of the event.";
   else if (today && v.dateFrom < today) e.dateFrom = "The start date can't be in the past.";
@@ -75,17 +117,36 @@ export function validateInvite(v: InviteValues, today?: string): Errors<InviteVa
   if (!ISO_DATE.test(v.dateTo)) e.dateTo = "Choose the last day of the event.";
   else if (ISO_DATE.test(v.dateFrom) && v.dateTo < v.dateFrom) e.dateTo = "The end date must be on or after the start date.";
 
-  if (t(v.social) && !SOCIAL.test(t(v.social))) e.social = "Use a handle like @name or a link to the profile.";
   if (t(v.topic).length < 3) e.topic = "Tell us the event topic or what you'd like him to speak on.";
+  if (t(v.burden).length < 10) e.burden = "Describe the burden or emphasis for the conference.";
+  if (!t(v.audienceSize)) e.audienceSize = "Give the estimated or projected audience size, e.g. “about 1,500”.";
 
-  const limits: [keyof InviteValues, number][] = [
+  const allowed = new Set<string>(audienceOptions);
+  if (v.audienceTypes.length === 0) e.audienceTypes = "Select at least one type of audience.";
+  else if (v.audienceTypes.some((a) => !allowed.has(a))) e.audienceTypes = "Choose from the options in the list.";
+
+  if (!/^\d+$/.test(t(v.sessions)) || Number(t(v.sessions)) < 1 || Number(t(v.sessions)) > 50) {
+    e.sessions = "Enter the number of sessions (a whole number from 1 to 50).";
+  }
+  if (t(v.sessionDetails).length < 3) e.sessionDetails = "Give the time and duration per session, e.g. “6:00 pm, 90 minutes”.";
+
+  const fe = flyerError(v.flyer);
+  if (fe) e.flyer = fe;
+
+  const limits: [TextKey, number][] = [
     ["fullName", 120],
     ["organization", 200],
     ["email", 200],
     ["phone", 30],
     ["location", 300],
     ["social", 200],
+    ["background", 2000],
+    ["ministrySize", 120],
     ["topic", 300],
+    ["burden", 2000],
+    ["audienceSize", 120],
+    ["sessions", 4],
+    ["sessionDetails", 300],
     ["comments", 3000],
   ];
   for (const [k, max] of limits) {

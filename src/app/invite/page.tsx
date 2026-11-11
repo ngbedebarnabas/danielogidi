@@ -23,7 +23,7 @@ export default function InvitePage() {
         eyebrow="Invitations"
         title={
           <>
-            Invite him to your <Highlight>event</Highlight>
+            <Highlight>Invite</Highlight> Apostle Daniel Ogidi
           </>
         }
         description="Tell us about your ministry and the gathering you have in mind. Every invitation is read and prayerfully considered."
@@ -31,7 +31,7 @@ export default function InvitePage() {
         focus="50% 35%"
       />
 
-      <section className="container-x pb-20 sm:pb-28">
+      <section className="container-x pb-24 sm:pb-36">
         <div className="grid gap-12 lg:grid-cols-[1fr_20rem] lg:gap-16">
           <Reveal>
             <div className="rounded-[2rem] border border-line bg-panel/60 p-6 sm:rounded-[2.5rem] sm:p-10">

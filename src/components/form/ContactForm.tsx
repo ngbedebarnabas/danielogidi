@@ -18,7 +18,7 @@ const initial: ContactValues = {
 const order: (keyof ContactValues & string)[] = ["name", "email", "phone", "subject", "message"];
 
 export function ContactForm() {
-  const { values, bind, setField, onSubmit, status, serverError, reset } = useEnquiryForm<ContactValues>({
+  const { values, bind, setValue, onSubmit, status, serverError, reset } = useEnquiryForm<ContactValues>({
     kind: "contact",
     initial,
     validate: validateContact,
@@ -43,7 +43,7 @@ export function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} noValidate className="relative space-y-6">
-      <Honeypot value={values.website} onChange={(v) => setField("website", v)} />
+      <Honeypot value={values.website} onChange={(v) => setValue("website", v, false)} />
 
       <div className="grid gap-6 sm:grid-cols-2">
         <TextField label="Your name" name="name" required autoComplete="name" placeholder="Full name" {...f("name")} />

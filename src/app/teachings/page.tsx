@@ -27,7 +27,7 @@ export default function TeachingsPage() {
         focus="20% 35%"
       />
 
-      <section className="container-x py-12 sm:py-20">
+      <section className="container-x py-16 sm:py-28">
         <SectionHeading eyebrow="Themes">
           What he <Highlight>teaches</Highlight>
         </SectionHeading>
@@ -45,7 +45,7 @@ export default function TeachingsPage() {
         </Stagger>
       </section>
 
-      <section className="container-x py-12 sm:py-20">
+      <section className="container-x py-16 sm:py-28">
         <SectionHeading eyebrow="Library">
           Watch, listen &amp; <Highlight>read</Highlight>
         </SectionHeading>

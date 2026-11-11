@@ -6,13 +6,13 @@ const strengths = ["Doctrinal depth", "Leadership competence", "Practical minist
 
 export function AdullamFeature() {
   return (
-    <section className="container-x py-24 sm:py-32">
+    <section className="container-x py-28 sm:py-40">
       <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
         <Reveal x={-30} y={0} className="relative">
           <div className="relative aspect-[16/11] overflow-hidden rounded-[2rem]">
             <Image
               src="/images/graduation-1.jpg"
-              alt="Adullam seminary graduates and faculty in academic regalia"
+              alt="Remnant Christian Network Theological Seminary (Adullam) graduates and faculty in academic regalia"
               fill
               sizes="(min-width: 1024px) 45vw, 92vw"
               className="object-cover"
@@ -33,7 +33,7 @@ export function AdullamFeature() {
 
         <div>
           <Reveal>
-            <p className="mb-4 text-xs font-bold tracking-[0.22em] text-gold-ink uppercase">Adullam seminary</p>
+            <p className="mb-4 text-xs font-bold tracking-[0.22em] text-gold-ink uppercase">Remnant Christian Network Theological Seminary (Adullam)</p>
             <h2 className="font-display text-[clamp(2rem,4.2vw,3.2rem)] leading-[1.1] font-extrabold tracking-tight">
               Raising <Highlight>equipped</Highlight> ministers
             </h2>

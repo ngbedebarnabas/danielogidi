@@ -4,10 +4,23 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import type { Errors } from "@/lib/validation";
 
 type Status = "idle" | "sending" | "sent" | "error";
+type FieldValue = string | string[] | File | null;
+
+/** Text → field, string[] → repeated field, File → file part. */
+function toFormData(kind: string, values: Record<string, FieldValue>) {
+  const body = new FormData();
+  body.append("kind", kind);
+  for (const [key, value] of Object.entries(values)) {
+    if (typeof value === "string") body.append(key, value);
+    else if (Array.isArray(value)) value.forEach((v) => body.append(key, v));
+    else if (value) body.append(key, value, value.name);
+  }
+  return body;
+}
 
 /**
  * Small controlled-form helper shared by the invitation and contact forms:
- * per-field validation on blur, focus-first-error on submit, JSON POST.
+ * per-field validation, focus-first-error on submit, multipart POST (so files can ride along).
  */
 export function useEnquiryForm<T extends { website: string }>({
   kind,
@@ -26,32 +39,33 @@ export function useEnquiryForm<T extends { website: string }>({
   const [status, setStatus] = useState<Status>("idle");
   const [serverError, setServerError] = useState("");
 
+  const setError = (key: keyof T, message?: string) =>
+    setErrors((prev) => {
+      if (prev[key] === message) return prev;
+      const next = { ...prev };
+      if (message) next[key] = message;
+      else delete next[key];
+      return next;
+    });
+
+  /** Props for a plain text / textarea / select field. */
   const bind = (key: keyof T & string) => ({
     value: values[key] as string,
     error: errors[key],
     onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
       setValues((v) => ({ ...v, [key]: e.target.value }));
-      if (errors[key]) {
-        setErrors((prev) => {
-          const next = { ...prev };
-          delete next[key];
-          return next;
-        });
-      }
+      if (errors[key]) setError(key);
     },
-    onBlur: () => {
-      const message = validate(values)[key];
-      setErrors((prev) => {
-        if (prev[key] === message) return prev;
-        const next = { ...prev };
-        if (message) next[key] = message;
-        else delete next[key];
-        return next;
-      });
-    },
+    onBlur: () => setError(key, validate(values)[key]),
   });
 
-  const setField = (key: keyof T & string, value: string) => setValues((v) => ({ ...v, [key]: value }));
+  /** Set any kind of value (list, file…) and validate that field straight away. */
+  function setValue<K extends keyof T>(key: K, value: T[K], validateNow = true) {
+    const next = { ...values, [key]: value };
+    setValues(next);
+    if (validateNow) setError(key, validate(next)[key]);
+    else if (errors[key]) setError(key);
+  }
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -70,8 +84,7 @@ export function useEnquiryForm<T extends { website: string }>({
     try {
       const res = await fetch("/api/enquiry", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ kind, ...values }),
+        body: toFormData(kind, values as Record<string, FieldValue>),
       });
       const data = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
@@ -98,5 +111,5 @@ export function useEnquiryForm<T extends { website: string }>({
     setServerError("");
   }
 
-  return { values, bind, setField, onSubmit, status, serverError, reset };
+  return { values, errors, bind, setValue, onSubmit, status, serverError, reset };
 }
