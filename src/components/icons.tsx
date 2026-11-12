@@ -122,6 +122,22 @@ export const Upload = (p: P) => (
     <path d="M12 16V4M7 9l5-5 5 5M5 20h14" />
   </svg>
 );
+export const Copy = (p: P) => (
+  <svg {...base(p)}>
+    <rect x="9" y="9" width="11" height="11" rx="2.5" />
+    <path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15" />
+  </svg>
+);
+export const Landmark = (p: P) => (
+  <svg {...base(p)}>
+    <path d="m3 10 9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18" />
+  </svg>
+);
+export const Heart = (p: P) => (
+  <svg {...base(p)}>
+    <path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20Z" />
+  </svg>
+);
 export const Expand = (p: P) => (
   <svg {...base(p)}>
     <path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" />

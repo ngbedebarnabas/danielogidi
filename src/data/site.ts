@@ -23,6 +23,7 @@ export const site = {
     { href: "/about", label: "About" },
     { href: "/itinerary", label: "Itinerary" },
     { href: "/teachings", label: "Teachings" },
+    { href: "/partnership", label: "Partnership" },
     { href: "/contact", label: "Contact" },
   ],
 } as const;

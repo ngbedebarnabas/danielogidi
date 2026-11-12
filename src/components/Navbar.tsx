@@ -10,8 +10,8 @@ import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 import { Close, Menu } from "./icons";
 
-const left = site.nav.slice(0, 2);
-const right = site.nav.slice(2);
+const left = site.nav.slice(0, 3);
+const right = site.nav.slice(3);
 
 export function Navbar() {
   const pathname = usePathname();

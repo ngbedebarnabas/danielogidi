@@ -15,6 +15,7 @@ npm run build && npm start
 | `/about` | Full bio, role cards, animated timeline, Remnant Christian Network Theological Seminary (Adullam) |
 | `/itinerary` | Upcoming / past engagements, each with its flyer or invitation (tap to enlarge) and "Add to Google Calendar". `/flyers` redirects here |
 | `/teachings` | Themes + filterable teaching library |
+| `/partnership` | Give online (Flutterwave) and bank-transfer details |
 | `/invite` | Event invitation form: ministry background and size, event dates, topic, burden, audience size and types (multi-select), sessions, session times, optional flyer upload |
 | `/contact` | General contact form |
 
@@ -25,6 +26,7 @@ Everything editable lives in `src/data/`:
 - `site.ts`: name, tagline, **contact email / phone / location and social links** (empty values are hidden), stats, ministry areas, timeline
 - `itinerary.ts`: events and their flyers (**sample entries**; replace them). Each event can have a `flyer` block: set `image` to real artwork in `public/flyers/` (e.g. `/flyers/conference.jpg`), or leave it out and a designed flyer is generated from the event text and a `photo`
 - `teachings.ts`: teaching library (**sample entries**). Add an `href` to turn "Coming soon" into a Watch / Listen / Read button
+- `partnership.ts`: the online-giving link and the **bank accounts** shown on the Partnership page (add one object per account; each gets a copy button)
 - `gallery.ts`: gallery photos (files in `public/images/`)
 
 Events move from Upcoming to Past automatically once their end date passes (the page refreshes hourly).
