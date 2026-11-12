@@ -72,6 +72,13 @@ export default function PartnershipPage() {
                   Give quickly with your card or other supported payment options. You will be taken to
                   Flutterwave&apos;s donation page to complete your gift.
                 </p>
+                <p className="mt-4 flex max-w-xl items-start gap-3 rounded-2xl border border-gold/40 bg-gold/10 px-4 py-3 text-sm leading-relaxed">
+                  <Star4 className="mt-0.5 size-4 shrink-0 text-gold" />
+                  <span>
+                    <strong className="font-bold">Note:</strong> on the payment page you can change the currency to the
+                    currency of your choice.
+                  </span>
+                </p>
               </div>
             </div>
             <div className="shrink-0">
