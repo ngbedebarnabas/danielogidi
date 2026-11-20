@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Syne } from "next/font/google";
 import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
 import { Providers } from "@/components/Providers";
+import { SiteChrome } from "@/components/SiteChrome";
 import { site } from "@/data/site";
 import "./globals.css";
 
@@ -52,9 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="min-h-screen">
         <Providers>
-          <Navbar />
-          <main id="main">{children}</main>
-          <Footer />
+          <SiteChrome footer={<Footer />}>{children}</SiteChrome>
         </Providers>
       </body>
     </html>

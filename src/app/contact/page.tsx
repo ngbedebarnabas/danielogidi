@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContactForm } from "@/components/form/ContactForm";
-import { Facebook, Instagram, Mail, Phone, Pin, XIcon, Youtube } from "@/components/icons";
+import { Mail, Phone, Pin } from "@/components/icons";
+import { SocialLinks } from "@/components/SocialLinks";
 import { Highlight, Reveal } from "@/components/motion";
 import { PageHeader } from "@/components/PageHeader";
 import { site } from "@/data/site";
@@ -11,16 +12,8 @@ export const metadata: Metadata = {
   description: "Get in touch with the office of Apostle Daniel Ogidi.",
 };
 
-const socials = [
-  { key: "facebook", label: "Facebook", Icon: Facebook },
-  { key: "youtube", label: "YouTube", Icon: Youtube },
-  { key: "instagram", label: "Instagram", Icon: Instagram },
-  { key: "x", label: "X", Icon: XIcon },
-] as const;
-
 export default function ContactPage() {
   const { email, phone, location } = site.contact;
-  const activeSocials = socials.filter((s) => site.socials[s.key]);
   const details: { Icon: typeof Mail; label: string; value: string; href?: string }[] = [];
   if (email) details.push({ Icon: Mail, label: "Email", value: email, href: `mailto:${email}` });
   if (phone) details.push({ Icon: Phone, label: "Phone", value: phone, href: `tel:${phone}` });
@@ -96,23 +89,14 @@ export default function ContactPage() {
                   International Director, Remnant Christian Network. Pioneer President, Remnant Christian Network
                   Theological Seminary (Adullam).
                 </p>
-                {activeSocials.length > 0 && (
-                  <ul className="mt-5 flex gap-3">
-                    {activeSocials.map(({ key, label, Icon }) => (
-                      <li key={key}>
-                        <a
-                          href={site.socials[key]}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={label}
-                          className="grid size-10 place-items-center rounded-full border border-line transition-colors hover:border-gold hover:bg-gold hover:text-ink"
-                        >
-                          <Icon width={18} height={18} />
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.24}>
+              <div className="rounded-[2rem] border border-line bg-panel/60 p-7">
+                <h2 className="font-display text-lg font-extrabold">Follow &amp; connect</h2>
+                <p className="mt-2 text-sm leading-relaxed text-fg/70">Messages, teachings and updates across his channels.</p>
+                <SocialLinks variant="list" className="mt-5" />
               </div>
             </Reveal>
           </aside>

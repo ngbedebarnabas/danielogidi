@@ -12,12 +12,6 @@ export const site = {
     phone: "",
     location: "",
   },
-  socials: {
-    facebook: "",
-    youtube: "",
-    instagram: "",
-    x: "",
-  },
 
   nav: [
     { href: "/about", label: "About" },
@@ -120,3 +114,22 @@ export const timeline = [
     body: "Appointed International Director, overseeing international operations, ministry expansion and leadership coordination across regions.",
   },
 ] as const;
+
+/** Social profiles and related sites, in the order they appear on the site. */
+export const socialLinks = [
+  { key: "youtube", label: "YouTube", handle: "@ogididan", href: "https://www.youtube.com/@ogididan" },
+  {
+    key: "whatsapp",
+    label: "WhatsApp Channel",
+    handle: "Follow the channel",
+    href: "https://www.whatsapp.com/channel/0029VaGar7835fM0aFku813o",
+  },
+  { key: "instagram", label: "Instagram", handle: "@dan.ogidi", href: "https://www.instagram.com/dan.ogidi" },
+  { key: "telegram", label: "Telegram", handle: "@reverenddanogidi", href: "https://t.me/reverenddanogidi" },
+  { key: "tiktok", label: "TikTok", handle: "@ogididan", href: "https://www.tiktok.com/@ogididan" },
+  { key: "facebook", label: "Facebook", handle: "ogididan", href: "https://web.facebook.com/ogididan" },
+  { key: "college", label: "Apostolic College", handle: "apostolicc.org", href: "https://apostolicc.org/" },
+  { key: "threads", label: "Threads", handle: "@dan.ogidi", href: "https://www.threads.com/@dan.ogidi" },
+] as const;
+
+export type SocialKey = (typeof socialLinks)[number]["key"];

@@ -2,11 +2,12 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import type { TeachingItem } from "@/data/teachings";
+import { teachingCategories, type TeachingItem } from "@/data/teachings";
 import { TeachingCard } from "./TeachingCard";
 
 export function TeachingsBrowser({ items }: { items: TeachingItem[] }) {
-  const categories = ["All", ...Array.from(new Set(items.map((i) => i.category)))];
+  // Tabs follow the order in `teachingCategories`; empty categories are skipped.
+  const categories = ["All", ...teachingCategories.filter((c) => items.some((i) => i.category === c))];
   const [cat, setCat] = useState("All");
   const shown = items.filter((i) => cat === "All" || i.category === cat);
 

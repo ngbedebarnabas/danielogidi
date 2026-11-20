@@ -50,3 +50,8 @@ export function dayParts(iso: string) {
     year: String(d.getUTCFullYear()),
   };
 }
+
+/** "12 Nov 2026" from an ISO date or datetime, always in UTC (stable between server and browser). */
+export function formatDay(iso: string) {
+  return fmt({ day: "numeric", month: "short", year: "numeric" }).format(new Date(iso));
+}

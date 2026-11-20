@@ -30,6 +30,9 @@
   }
 }
 
+/* Tailwind `dark:` follows the site theme toggle (data-theme), not the OS setting. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 @utility container-x {
   width: 100%;
   max-width: 80rem;

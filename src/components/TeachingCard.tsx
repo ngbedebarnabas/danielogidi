@@ -1,9 +1,9 @@
 import Image from "next/image";
 import type { TeachingItem } from "@/data/teachings";
-import { ArrowUpRight, FileText, Headphones, Play } from "./icons";
+import { ArrowUpRight, FileText, Headphones, ListVideo, Play } from "./icons";
 
-const formatIcon = { Video: Play, Audio: Headphones, Article: FileText } as const;
-const cta = { Video: "Watch", Audio: "Listen", Article: "Read" } as const;
+const formatIcon = { Video: Play, Audio: Headphones, Article: FileText, Playlist: ListVideo } as const;
+const cta = { Video: "Watch", Audio: "Listen", Article: "Read", Playlist: "Watch playlist" } as const;
 
 export function TeachingCard({ item }: { item: TeachingItem }) {
   const Icon = formatIcon[item.format];
@@ -12,7 +12,7 @@ export function TeachingCard({ item }: { item: TeachingItem }) {
     <article className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-line bg-panel/70 transition-colors duration-300 hover:border-gold/50">
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
-          src={item.image}
+          src={item.youtubeThumb ? `https://i.ytimg.com/vi/${item.youtubeThumb}/hqdefault.jpg` : item.image}
           alt={item.alt}
           fill
           sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw"

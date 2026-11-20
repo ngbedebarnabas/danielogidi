@@ -4,7 +4,8 @@ import { site } from "@/data/site";
 import { Button } from "./Button";
 import { Logo } from "./Logo";
 import { Burst } from "./Sparkle";
-import { Facebook, Instagram, Mail, Phone, XIcon, Youtube } from "./icons";
+import { SocialLinks } from "./SocialLinks";
+import { Mail, Phone } from "./icons";
 
 async function Year() {
   "use cache";
@@ -12,16 +13,7 @@ async function Year() {
   return <>{new Date().getFullYear()}</>;
 }
 
-const socials = [
-  { key: "facebook", label: "Facebook", Icon: Facebook },
-  { key: "youtube", label: "YouTube", Icon: Youtube },
-  { key: "instagram", label: "Instagram", Icon: Instagram },
-  { key: "x", label: "X", Icon: XIcon },
-] as const;
-
 export function Footer() {
-  const activeSocials = socials.filter((s) => site.socials[s.key]);
-
   return (
     <footer data-theme="dark" className="gold-glow relative text-fg mt-10 overflow-hidden rounded-t-[2.5rem] border-t border-line bg-coal sm:rounded-t-[4rem]">
       <div className="container-x pt-20 pb-10">
@@ -80,23 +72,7 @@ export function Footer() {
               )}
             </div>
 
-            {activeSocials.length > 0 && (
-              <ul className="mt-6 flex gap-3">
-                {activeSocials.map(({ key, label, Icon }) => (
-                  <li key={key}>
-                    <a
-                      href={site.socials[key]}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      className="grid size-10 place-items-center rounded-full border border-line text-white/80 transition-colors hover:border-gold hover:bg-gold hover:text-ink"
-                    >
-                      <Icon width={18} height={18} />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <SocialLinks className="mt-6" />
           </div>
         </div>
 

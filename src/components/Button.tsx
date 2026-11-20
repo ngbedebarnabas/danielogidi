@@ -31,7 +31,7 @@ type ButtonProps = CommonProps & { href?: undefined } & Omit<ComponentProps<"but
 export function Button(props: LinkProps | ButtonProps) {
   const { variant = "gold", arrow = true, className = "", children, ...rest } = props;
   const v = variants[variant];
-  const cls = `group inline-flex items-center gap-3 rounded-full py-2 pr-2 pl-6 text-sm font-semibold tracking-wide transition-colors duration-300 disabled:cursor-not-allowed disabled:opacity-60 ${v.box} ${className}`;
+  const cls = `group inline-flex items-center gap-3 rounded-full ${arrow ? "py-2 pr-2 pl-6" : "px-6 py-3.5"} text-sm font-semibold tracking-wide transition-colors duration-300 disabled:cursor-not-allowed disabled:opacity-60 ${v.box} ${className}`;
   const inner = (
     <>
       <span>{children}</span>
