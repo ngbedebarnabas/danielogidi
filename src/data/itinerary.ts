@@ -1,3 +1,10 @@
+/**
+ * While the CMS is being connected, the Itinerary page and the home-page preview
+ * show a "Coming soon" message instead of the events below. Set to `false` to
+ * show the events again.
+ */
+export const itineraryComingSoon = true;
+
 export type EventItem = {
   id: string;
   title: string;

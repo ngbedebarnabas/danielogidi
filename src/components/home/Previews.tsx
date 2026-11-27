@@ -1,8 +1,10 @@
 import { Button } from "@/components/Button";
 import { EventCard } from "@/components/EventCard";
+import { ItineraryComingSoon } from "@/components/ItineraryComingSoon";
 import { SectionHeading } from "@/components/SectionHeading";
 import { TeachingCard } from "@/components/TeachingCard";
 import { Highlight, Reveal, Stagger, StaggerItem } from "@/components/motion";
+import { itineraryComingSoon } from "@/data/itinerary";
 import { teachings } from "@/data/teachings";
 import { getEventBuckets } from "@/lib/events";
 
@@ -20,7 +22,9 @@ export async function ItineraryPreview() {
       </SectionHeading>
 
       <div className="mt-12 flex flex-col gap-4">
-        {next.length ? (
+        {itineraryComingSoon ? (
+          <ItineraryComingSoon compact />
+        ) : next.length ? (
           next.map((e, i) => (
             <Reveal key={e.id} delay={i * 0.08}>
               <EventCard event={e} />
