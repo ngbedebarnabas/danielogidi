@@ -72,11 +72,10 @@ export default function PartnershipPage() {
                   Give quickly with your card or other supported payment options. You will be taken to
                   Flutterwave&apos;s donation page to complete your gift.
                 </p>
-                <p className="mt-4 flex max-w-xl items-start gap-3 rounded-2xl border border-gold/40 bg-gold/10 px-4 py-3 text-sm leading-relaxed">
-                  <Star4 className="mt-0.5 size-4 shrink-0 text-gold" />
+                <p className="mt-5 flex max-w-2xl items-start gap-4 rounded-2xl border border-gold/40 bg-gold/10 px-5 py-4 font-display text-2xl leading-tight font-extrabold sm:text-3xl">
+                  <Star4 className="mt-1.5 size-6 shrink-0 text-gold" />
                   <span>
-                    <strong className="font-bold">Note:</strong> on the payment page you can change the currency to the
-                    currency of your choice.
+                    Note: on the payment page you can change the currency to the currency of your choice.
                   </span>
                 </p>
               </div>
@@ -164,8 +163,8 @@ export default function PartnershipPage() {
 
       {/* What it advances */}
       <section className="container-x py-16 sm:py-28">
-        <SectionHeading eyebrow="Why partner">
-          Areas of ministry you help <Highlight>advance</Highlight>
+        <SectionHeading eyebrow="Areas of ministry you help advance">
+          Why <Highlight>partner</Highlight>
         </SectionHeading>
         <Stagger className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {pillars.map((p, i) => (
